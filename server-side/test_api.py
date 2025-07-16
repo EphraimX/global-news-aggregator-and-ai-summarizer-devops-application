@@ -36,7 +36,7 @@ async def test_endpoints():
         # Test 2: Get Articles
         print("2️⃣ Testing Get Articles...")
         try:
-            response = await client.get(f"{BASE_URL}/api/news/articles?limit=5")
+            response = await client.get(f"{BASE_URL}/api/news/articles?limit=20")
             if response.status_code == 200:
                 articles = response.json()
                 print(f"✅ Got {len(articles)} articles")

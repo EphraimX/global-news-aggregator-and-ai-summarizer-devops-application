@@ -35,6 +35,11 @@ import os
 import sys
 import subprocess
 from pathlib import Path
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 
 def check_requirements():
     """Check if required packages are installed"""
@@ -65,8 +70,8 @@ def check_requirements():
 def setup_environment():
     """Setup environment variables with defaults"""
     env_vars = {
-        "NEWS_API_KEY": "your_newsapi_key_here",
-        "OPENAI_API_KEY": "your_openai_key_here", 
+        "NEWS_API_KEY": os.getenv("NEWS_API_KEY", "your_newsapi_key_here"),
+        "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "your_openai_key_here"), 
         "HOST": "0.0.0.0",
         "PORT": "8000",
         "DEBUG": "True"
@@ -112,7 +117,7 @@ def main():
         import uvicorn
         
         uvicorn.run(
-            app,
+            "main:app",
             host=os.getenv("HOST", "0.0.0.0"),
             port=int(os.getenv("PORT", 8000)),
             reload=os.getenv("DEBUG", "True").lower() == "true",
