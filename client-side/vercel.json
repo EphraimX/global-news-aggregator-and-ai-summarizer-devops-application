@@ -1,10 +1,10 @@
 {
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://your-backend-domain.com"
+    "NEXT_PUBLIC_API_URL": "https://8000-ephraimx-globalnewsaggr-7efqzmhx7ps.ws-eu120.gitpod.io"
   },
   "build": {
     "env": {
-      "NEXT_PUBLIC_API_URL": "https://your-backend-domain.com"
+      "NEXT_PUBLIC_API_URL": "https://8000-ephraimx-globalnewsaggr-7efqzmhx7ps.ws-eu120.gitpod.io"
     }
   }
 }

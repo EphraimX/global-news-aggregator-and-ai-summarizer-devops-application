@@ -6,7 +6,7 @@ load_dotenv()
 class Settings:
     # API Keys
     NEWS_API_KEY = os.getenv("NEWS_API_KEY", "your_newsapi_key_here")
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "your_openai_key_here")
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "your_openai_key_here")
     
     # Amazon RDS Database Configuration
     DB_HOST = os.getenv("DB_HOST", "your-rds-endpoint.region.rds.amazonaws.com")

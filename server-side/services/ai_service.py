@@ -1,13 +1,14 @@
 import openai
 from typing import Optional
 import asyncio
-
+import requests
 from config import settings
+from google import genai
+from google.genai import types
+
 
 class AIService:
     def __init__(self):
-        openai.api_key = settings.OPENAI_API_KEY
-        self.model = settings.OPENAI_MODEL
         self.max_length = settings.MAX_SUMMARY_LENGTH
 
     async def generate_summary(self, title: str, content: str) -> str:
@@ -25,22 +26,16 @@ class AIService:
             Provide a clear, concise summary that captures the essential information and significance of this news story. 
             Make it engaging and informative!
             """
+    
+            client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
-            response = await asyncio.to_thread(
-                openai.ChatCompletion.create,
-                model=self.model,
-                messages=[
-                    {
-                        "role": "system", 
-                        "content": "You are a professional news summarizer. Create engaging, concise summaries."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=150,
-                temperature=0.7
+            response = client.models.generate_content(
+                model="gemini-2.5-pro",
+                contents=prompt
             )
 
-            summary = response.choices[0].message.content.strip()
+
+            summary = response.text
             
             # Ensure summary isn't too long
             if len(summary) > self.max_length:

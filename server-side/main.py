@@ -15,7 +15,8 @@ app = FastAPI(
 origins = [
     "http://localhost",
     "http://localhost:3000",  # or the port your frontend uses
-    "https://your-frontend-domain.com"
+    "https://your-frontend-domain.com",
+    "https://3000-ephraimx-globalnewsaggr-7efqzmhx7ps.ws-eu120.gitpod.io"
 ]
 
 app.add_middleware(
